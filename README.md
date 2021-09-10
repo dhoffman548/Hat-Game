@@ -1,2 +1,2 @@
 # Hat Game
- Hat Gaming
+ https://dhoffman548.github.io/Hat-Game/index.html
