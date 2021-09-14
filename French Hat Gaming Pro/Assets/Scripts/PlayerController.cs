@@ -85,9 +85,16 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
     void OutofBounds ()
     {
         Ray ray = new Ray(transform.position, Vector3.down);
-        if(Physics.Raycast(ray, 20f))
+        if(!Physics.Raycast(ray, 20f))
         {
-
+            for(int i = 0; i < GameManager.instance.players.Length; i++)
+            {
+                if (GameManager.instance.players[i].id != id)
+                {
+                    GameManager.instance.photonView.RPC("GiveHat", RpcTarget.All, GameManager.instance.players[i].id, false);
+                    break;
+                }
+            }
         }
     }
 
